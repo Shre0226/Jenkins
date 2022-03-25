@@ -13,12 +13,6 @@ pipeline {
       agent any
       steps{
         script {
-          sh ''' 
-                sudo su
-                yum install docker-engine -y
-                service docker start
-              '''
-          
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
           
         }
