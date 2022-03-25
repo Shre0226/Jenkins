@@ -6,18 +6,24 @@ pipeline {
   }
   agent any
   stages {
+
+    stage('Cloning Git') {
+      steps {
+        git url: 'https://github.com/Shre0226/Jenkins.git'
+        sh "ls -lat"
+      }
+    }
     
     stage('Building image') {
-      agent {
-                docker {
-                    image 'docker'
-                    // Run the container on the node specified at the top-level of the Pipeline, in the same workspace, rather than on a new node entirely:
-                    reuseNode true
-                }
-            }
+      agent any
       steps{
         script {
+          sh ''' yum install docker-engine -y
+                service docker start
+              '''
+          
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          
         }
       }
     }
