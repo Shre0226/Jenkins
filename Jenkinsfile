@@ -13,7 +13,7 @@ pipeline {
       agent any
       steps{
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          dockerImage = docker.build "project-jenkins" + ":$BUILD_NUMBER"
           
         }
       }
