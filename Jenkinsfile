@@ -24,7 +24,6 @@ pipeline {
         script {
           sh ''' 
           docker run -d -p 8000:8000 "project-jenkins:${BUILD_NUMBER}"
-          curl localhost:8000
           '''
           
         }
