@@ -23,7 +23,7 @@ pipeline {
       steps{
         script {
           sh ''' 
-          docker run --rm "project-jenkins" + ":${BUILD_NUMBER}"
+          docker run --rm "project-jenkins:${BUILD_NUMBER}"
           curl 3.82.130.171:8000
           '''
           
