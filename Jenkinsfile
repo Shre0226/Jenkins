@@ -24,9 +24,22 @@ pipeline {
         script {
           sh ''' 
           docker run -d -p 8000:8000 "project-jenkins:${BUILD_NUMBER}"
-          curl 3.82.130.171:8000
+          curl localhost:8000
           '''
           
+        }
+      }
+    }
+
+    stage('Deploy image in production EC2') {
+      agent any
+      steps{
+        script {
+          
+          sshagent(['AWSSecretKey']) {
+              sh 'ssh -i "Shreya-Keypair.pem" ec2-user@ec2-54-197-9-239.compute-1.amazonaws.com'
+            
+          }
         }
       }
     }
