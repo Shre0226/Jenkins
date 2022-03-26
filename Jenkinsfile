@@ -22,8 +22,10 @@ pipeline {
       agent any
       steps{
         script {
-          sh "docker run 8000:8000 project-jenkins" 
-          sh "curl 3.82.130.171:8000"
+          sh ''' 
+          docker run --rm "project-jenkins" + ":${BUILD_NUMBER}"
+          curl 3.82.130.171:8000
+          '''
           
         }
       }
