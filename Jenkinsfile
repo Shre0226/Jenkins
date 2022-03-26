@@ -18,5 +18,15 @@ pipeline {
         }
       }
     }
+    stage('Running image') {
+      agent any
+      steps{
+        script {
+          sh "docker run -it -p 8000:8000 project-jenkins" 
+          sh "curl 3.82.130.171:8000"
+          
+        }
+      }
+    }
   }
 }
