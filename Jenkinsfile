@@ -35,10 +35,7 @@ pipeline {
       steps{
         script {
           
-          sshagent(['AWSSecretKey']) {
-              sh 'ssh -i "Shreya-Keypair.pem" ec2-user@ec2-54-197-9-239.compute-1.amazonaws.com'
-            
-          }
+          sh "ssh -i "Shreya-Keypair.pem" ec2-user@ec2-54-197-9-239.compute-1.amazonaws.com"
         }
       }
     }
