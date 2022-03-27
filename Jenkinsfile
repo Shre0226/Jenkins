@@ -34,7 +34,7 @@ pipeline {
       agent any
       steps{
         script {
-          sh "ssh ec2-user@ec2-54-197-9-239.compute-1.amazonaws.com -i ~/.ssh/Shreya-keypair.pem"
+          sh "ssh -T ec2-user@ec2-54-197-9-239.compute-1.amazonaws.com -i ~/.ssh/Shreya-keypair.pem"
         }
       }
     }
