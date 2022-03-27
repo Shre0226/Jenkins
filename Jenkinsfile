@@ -28,6 +28,15 @@ pipeline {
         sh 'aws configure set default.output json'
         sh 'aws ecr get-login --region us-east-1'
         sh 'docker push "project-jenkins:${BUILD_NUMBER}"'
+        script {
+          docker.withRegistry(
+            'https://853973692277.dkr.ecr.us-east-1.amazonaws.com',
+            'ecr:shreya_jenkins_repo:ec2-instance-credential') {
+              def image = docker.build('shreya_jenkins_repo')
+              
+            }
+          )
+        }
       }
     }
 
