@@ -24,7 +24,9 @@ pipeline {
       steps{
         script {
           sh ''' 
-          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 853973692277.dkr.ecr.us-east-1.amazonaws.com
+          login="$(aws ecr get-login --no-include-email --region us-east-1)"
+          ${login}
+          docker login --username AWS --password-stdin 853973692277.dkr.ecr.us-east-1.amazonaws.com
           docker push "project-jenkins:${BUILD_NUMBER}"
           '''
           
