@@ -29,7 +29,7 @@ pipeline {
         script {
           docker.withRegistry(
             'https://853973692277.dkr.ecr.us-east-1.amazonaws.com',
-            'ecr:shreya_jenkins_repo:ec2-instance-credential') {
+            'ecr:us-east-1:ec2-instance-credential') {
               def image = docker.build('shreya_jenkins_repo')
 
             }
