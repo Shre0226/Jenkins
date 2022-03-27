@@ -22,10 +22,11 @@ pipeline {
     stage('Running image') {
      
       steps{
-        
+        script{ 
         docker.withRegistry("https://853973692277.dkr.ecr.us-east-1.amazonaws.com", "ecr:us-east-1:ec2-instance-role") {
             docker.image("project-jenkins:${BUILD_NUMBER}").push()
         }
+      }
       }
     }
 
