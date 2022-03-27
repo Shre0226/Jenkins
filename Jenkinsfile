@@ -18,6 +18,7 @@ pipeline {
         }
       }
     }
+
     stage('Running image') {
      
       steps{
