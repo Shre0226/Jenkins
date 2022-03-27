@@ -10,7 +10,7 @@ pipeline {
    
     
     stage('Building image') {
-      agent any
+     
       steps{
         script {
           dockerImage = docker.build "project-jenkins" + ":$BUILD_NUMBER"
@@ -19,7 +19,7 @@ pipeline {
       }
     }
     stage('Running image') {
-      agent any
+     
       steps{
         script {
           sh ''' 
@@ -31,10 +31,10 @@ pipeline {
     }
 
     stage('Deploy image in production EC2') {
-      agent any
+  
       steps{
         sshagent(credentials: ['AWSSecretKey']) {
-        sh 'ssh ec2-user@54.197.9.239 ls'
+        sh 'ssh -o StrictHostKeyChecking=no ec2-user@54.197.9.239 ls'
         }
       }
     }
