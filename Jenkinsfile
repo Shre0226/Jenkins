@@ -44,7 +44,7 @@ pipeline {
         }
         ec2-instance-role
      }
-      }
+      
     }
   
 
