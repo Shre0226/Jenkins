@@ -22,11 +22,8 @@ pipeline {
     stage('Running image') {
      
       steps{
-        script{ 
-        docker.withRegistry("https://853973692277.dkr.ecr.us-east-1.amazonaws.com", "ecr:us-east-1:ec2-instance-role") {
-            docker.image("project-jenkins:${BUILD_NUMBER}").push()
-        }
-      }
+        sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 853973692277.dkr.ecr.us-east-1.amazonaws.com'
+        sh 'docker push "project-jenkins:${BUILD_NUMBER}"'
       }
     }
 
