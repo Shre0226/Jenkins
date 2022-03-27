@@ -35,7 +35,7 @@ pipeline {
   
       steps{
         sshagent(credentials: ['AWSSecretKey']) {
-        sh 'ssh -o StrictHostKeyChecking=no ec2-user@54.197.9.239 aws ecr get-login --no-include-email --region us-west-2'
+        sh 'ssh -o StrictHostKeyChecking=no ec2-user@54.197.9.239 aws ecr get-login --no-include-email --region us-east-1'
         sh 'ssh -o StrictHostKeyChecking=no ec2-user@54.197.9.239 docker pull 853973692277.dkr.ecr.us-east-1.amazonaws.com/shreya_jenkins_repo:latest'
         sh 'ssh -o StrictHostKeyChecking=no ec2-user@54.197.9.239 docker run -d -p 8000:8000 853973692277.dkr.ecr.us-east-1.amazonaws.com/shreya_jenkins_repo:latest'
         sh 'ssh -o StrictHostKeyChecking=no ec2-user@54.197.9.239 curl localhost:8000'
