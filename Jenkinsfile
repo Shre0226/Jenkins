@@ -22,7 +22,7 @@ pipeline {
     stage('Running image') {
      
       steps{
-        sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 853973692277.dkr.ecr.us-east-1.amazonaws.com'
+        sh 'aws ecr get-login --region us-east-1 | docker login --username AWS --password-stdin 853973692277.dkr.ecr.us-east-1.amazonaws.com'
         sh 'docker push "project-jenkins:${BUILD_NUMBER}"'
       }
     }
