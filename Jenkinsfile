@@ -26,8 +26,6 @@ pipeline {
         sh 'aws configure set aws_secret_access_key aI8T45AK8dPR6jTDweXhi+LlImojJVWFqNP9HqTD'
         sh 'aws configure set default.region us-east-1'
         sh 'aws configure set default.output json'
-        sh 'aws ecr get-login --region us-east-1'
-        sh 'docker push "project-jenkins:${BUILD_NUMBER}"'
         script {
           docker.withRegistry(
             'https://853973692277.dkr.ecr.us-east-1.amazonaws.com',
