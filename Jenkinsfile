@@ -33,8 +33,8 @@ pipeline {
     stage('Deploy image in production EC2') {
       agent any
       steps{
-        script {
-          sh "ssh -i /var/lib/jenkins/.ssh/Shreya-keypair.pem ec2-user@ec2-54-197-9-239.compute-1.amazonaws.com"
+        sshagent(credentials: ['AWSSecretKey']) {
+        sh 'ssh ec2-user@54.197.9.239 ls'
         }
       }
     }
